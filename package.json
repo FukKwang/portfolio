@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwind build src/style.css -o dist/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FukKwang/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FukKwang/portfolio/issues"
+  },
+  "homepage": "https://github.com/FukKwang/portfolio#readme",
+  "dependencies": {
+    "tailwindcss": "^1.1.2"
+  }
+}
