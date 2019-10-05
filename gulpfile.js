@@ -7,11 +7,11 @@ const del = require('del');
 const tailwindcss = require('tailwindcss');
 
 function clean() {
-    return del(['live/**', '!live'])
+    return del(['docs/**', '!docs'])
 }
 
 function html() {
-    return src('src/*.html').pipe(dest('live/'))
+    return src('src/*.html').pipe(dest('docs/'))
 }
 
 function css() {
@@ -39,7 +39,7 @@ function css() {
         ])
     )
     .pipe(rename('style.css'))
-    .pipe(dest('live/'))
+    .pipe(dest('docs/'))
 }
 
 exports.default = series(clean, parallel(html, css));
