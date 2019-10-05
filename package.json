@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "tailwind build src/style.css -o dist/style.css"
+    "build:css": "tailwind build tailwind.css -o src/style.css"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
     "tailwindcss": "^1.1.2"
   }
 }

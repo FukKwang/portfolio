@@ -1,21 +1,23 @@
 const { src, dest, series, parallel } = require('gulp');
-const postcss = require('gulp-postcss')
-const purgecss = require('@fullhuman/postcss-purgecss')
-const cssnano = require('cssnano')
-const del = require('del')
+const postcss = require('gulp-postcss');
+const rename = require('gulp-rename');
+const purgecss = require('@fullhuman/postcss-purgecss');
+const cssnano = require('cssnano');
+const del = require('del');
+const tailwindcss = require('tailwindcss');
 
 function clean() {
     return del(['live/**', '!live'])
 }
 
-function copySrcToLive() {
+function html() {
     return src('src/*.html').pipe(dest('live/'))
 }
 
-function talwindCss() {
-    return src('src/style.css').pipe(
+function css() {
+    return src('tailwind.css').pipe(
         postcss([
-            require('tailwindcss'),
+            tailwindcss,
             cssnano({
                 preset: 'default',
             }),
@@ -36,7 +38,8 @@ function talwindCss() {
             require('cssnano'),
         ])
     )
+    .pipe(rename('style.css'))
     .pipe(dest('live/'))
 }
 
-exports.default = series(clean, parallel(copySrcToLive, talwindCss));
+exports.default = series(clean, parallel(html, css));
