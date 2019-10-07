@@ -1,6 +1,8 @@
 const { src, dest, series, parallel } = require('gulp');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
+const imagemin = require('gulp-imagemin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const purgecss = require('@fullhuman/postcss-purgecss');
 const cssnano = require('cssnano');
 const del = require('del');
@@ -42,4 +44,8 @@ function css() {
     .pipe(dest('docs/'))
 }
 
-exports.default = series(clean, parallel(html, css));
+function jpg() {
+    return src('src/asset/*.jpg').pipe(imagemin([imageminMozjpeg()])).pipe(dest('docs/asset/'));
+}
+
+exports.default = series(clean, parallel(html, css, jpg));
